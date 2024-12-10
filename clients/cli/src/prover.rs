@@ -35,6 +35,7 @@ use tokio_tungstenite::tungstenite::protocol::{
 };
 use tracing_subscriber::fmt::format::FmtSpan;
 use tracing_subscriber::EnvFilter;
+use tokio::time::{sleep, Duration};
 
 use nexus_core::{
     nvm::{
@@ -198,6 +199,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let start_time = Instant::now();
         let mut progress_time = start_time;
         for step in start..end {
+            sleep(Duration::from_secs(0.5)).await;
             // proof = prove_seq_step(Some(proof), &pp, &tr).expect("error proving step");
             steps_proven += 1;
 
