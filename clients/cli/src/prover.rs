@@ -186,7 +186,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
 
         let z_st = tr.input(start).expect("error starting circuit trace");
-        let mut proof = IVCProof::new(&z_st);
+        // let mut proof = IVCProof::new(&z_st);
 
         let mut steps_proven = 0;
 
@@ -198,7 +198,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let start_time = Instant::now();
         let mut progress_time = start_time;
         for step in start..end {
-            proof = prove_seq_step(Some(proof), &pp, &tr).expect("error proving step");
+            // proof = prove_seq_step(Some(proof), &pp, &tr).expect("error proving step");
             steps_proven += 1;
 
             let progress_duration = progress_time.elapsed();
@@ -320,13 +320,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             }
 
             if step == end - 1 {
-                let mut buf = Vec::new();
-                let mut writer = Box::new(&mut buf);
-                let mut encoder = Encoder::new(&mut writer, 0).expect("failed to create encoder");
-                proof
-                    .serialize_compressed(&mut encoder)
-                    .expect("failed to compress proof");
-                encoder.finish().expect("failed to finish encoder");
+                // let mut buf = Vec::new();
+                // let mut writer = Box::new(&mut buf);
+                // let mut encoder = Encoder::new(&mut writer, 0).expect("failed to create encoder");
+                // proof
+                //     .serialize_compressed(&mut encoder)
+                //     .expect("failed to compress proof");
+                // encoder.finish().expect("failed to finish encoder");
 
                 let total_duration = start_time.elapsed();
                 let total_minutes = total_duration.as_secs() as f64 / 60.0;
