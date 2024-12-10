@@ -199,7 +199,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let start_time = Instant::now();
         let mut progress_time = start_time;
         for step in start..end {
-            sleep(Duration::from_millis(500)).await;
+            sleep(Duration::from_millis(100)).await;
             // proof = prove_seq_step(Some(proof), &pp, &tr).expect("error proving step");
             steps_proven += 1;
 
